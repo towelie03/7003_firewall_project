@@ -9,6 +9,15 @@ if [ "$EUID" -ne 0 ]; then
   exit
 fi
 
+# Disable Snort3
+echo "Stopping Snort3 service..."
+if systemctl is-active --quiet snort3; then
+  sudo systemctl stop snort3
+  echo "Snort3 service stopped."
+else
+  echo "Snort3 service is not running."
+fi
+
 ##list all tables
 echo "Listing all nftables rules:"
 nft list ruleset ## use "nft list tables" if you want to see the tables without the rules
