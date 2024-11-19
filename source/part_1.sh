@@ -1,7 +1,5 @@
 #!/bin/bash
 
-victim_ip="192.168.50.98"
-
 # Check if the script is running as root
 if [ "$EUID" -ne 0 ]; then
   echo "This script must be run as root. Re-running with sudo..."
